@@ -1,7 +1,8 @@
 import { defineConfig, env } from "prisma/config";
 import "dotenv/config";
+import { PrismaClient } from "@prisma/client";
 
-export default defineConfig({
+defineConfig({
   schema: "prisma/schema.prisma",
   migrations: {
     path: "prisma/migrations",
@@ -11,3 +12,7 @@ export default defineConfig({
     url: env("DATABASE_URL"),
   },
 });
+
+const db = new PrismaClient();
+
+export default db
