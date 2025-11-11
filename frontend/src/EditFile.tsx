@@ -44,6 +44,8 @@ function MyOnChangePlugin({ onChange } : any) {
 
 
 
+
+
 const Editor = ({onChange}: any) => {
   const initialConfig = {
     namespace: 'MyEditor',
