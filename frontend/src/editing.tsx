@@ -11,7 +11,8 @@ const Editor2 = ( props : any) => {
 
     useEffect(() =>{
         const push = async() =>{
-            await axios.post(`${url}/post/${props.id}`)
+            console.log("We pushing!")
+            await axios.post(`${url}`)
         }
 
         const intervalId = setInterval(push, 3000);

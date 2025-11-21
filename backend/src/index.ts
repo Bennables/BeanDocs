@@ -2,14 +2,14 @@ import express from "express";
 import type { Request, Response }  from 'express';
 import cors from "cors";
 import * as dotenv from "dotenv";
-import db from "../prisma.config";
+// import db from "./prisma";
 
 // Load environment variables
 dotenv.config();
 const app = express();
 
 // Enable CORS for development
-app.use(cors());
+app.use(cors);
 
 app.use(express.json());
 
@@ -40,9 +40,9 @@ app.get("/:id", async (req: Request, res: Response) =>{
   console.log(req.params.id);
   console.log("THAT's the number we got")
 
-  let doc: JSON = await db.user.findMany();
-  console.log(doc);
-  res.send(doc);
+//   let doc: JSON = await db.user.findMany();
+//   console.log(doc);
+//   res.send(doc);
 })
 
 
