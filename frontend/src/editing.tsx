@@ -2,17 +2,30 @@ import { useSearchParams } from "react-router-dom";
 import Editor from "./EditFile"
 import { useEffect, useState } from "react";
 import axios from "axios";
+// import { defineConfig, loadEnv } from 'vite';
 
 
 const Editor2 = ( props : any) => { 
 
     const [editorState, setEditorState] = useState("");
-    const url = import.meta.env.VITE_LINK;
+    const url = import.meta.env.VITE_BASE_LINK;
+    
 
     useEffect(() =>{
         const push = async() =>{
-            console.log("We pushing!")
-            await axios.post(`${url}`)
+            console.log("pushinggg");
+            console.log(url);
+
+            axios.post(`${url}`, { timeout: 3000 }) // Sets a timeout of 3 seconds for this specific request
+            .then(response => {
+                // Handle success
+                console.log("SUCESS")
+            })
+            .catch(error => {
+                // Handle timeout or other errors
+                console.log(error)
+            });
+
         }
 
         const intervalId = setInterval(push, 3000);
