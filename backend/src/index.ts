@@ -26,8 +26,8 @@ app.post('/', (req: Request, res: Response) => {
 })
 
 app.put('/', (req: Request, res: Response) => {
-  res.send("PUTTING TO THE MAIN URL")
-  console.log("THAT's the number we got")
+  res.send("PUTTING TO THE MAIN URL");
+  console.log("THAT's the number we got");
 })
 
 app.delete('/', (req: Request, res: Response) => {
