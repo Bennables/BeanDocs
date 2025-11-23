@@ -16,10 +16,10 @@ const Editor2 = ( props : any) => {
             console.log("pushinggg");
             console.log(url);
 
-            axios.post(`${url}`, { timeout: 3000 }) // Sets a timeout of 3 seconds for this specific request
+            axios.post(`${url}/${props.id}`,{data : editorState}, { timeout: 3000 }) // Sets a timeout of 3 seconds for this specific request
             .then(response => {
                 // Handle success
-                console.log("SUCESS")
+                console.log("SUCCESS");
             })
             .catch(error => {
                 // Handle timeout or other errors
