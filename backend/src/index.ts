@@ -37,7 +37,8 @@ app.delete('/', (req: Request, res: Response) => {
 
 app.get("/:id", async (req:Request, res: Response) =>{
 
-
+  console.log("TRYING TO GET");
+  res.status(200).send({"msg": "GET IS GOOD"})
 
 
 })
@@ -48,7 +49,7 @@ app.post("/:id", async (req: Request, res: Response) =>{
 
   console.log(req.body.data)
 
-  res.status(200).send({"msg": "WE GOOD"})
+  res.status(200).send({"msg": "POST IS GOOD"})
 
 //   let doc: JSON = await db.user.findMany();
 //   console.log(doc);
@@ -57,4 +58,4 @@ app.post("/:id", async (req: Request, res: Response) =>{
 
 
 const PORT = process.env.PORT || 5001;
-app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
+app.listen(PORT, () => console.log(`Secrver started on port ${PORT}`));

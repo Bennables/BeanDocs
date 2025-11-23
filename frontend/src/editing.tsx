@@ -9,6 +9,24 @@ const Editor2 = ( props : any) => {
 
     const [editorState, setEditorState] = useState("");
     const url = import.meta.env.VITE_BASE_LINK;
+
+
+
+    useEffect(() => {
+        const retrievePage = async() =>{
+            axios.get(`${url}/${props.id}`)
+            .then(res => {
+                console.log(res)
+            })
+            .catch(
+                err=> {
+                    console.log(err);
+            })
+
+        }
+        retrievePage();
+
+    }, [])
     
 
     useEffect(() =>{
