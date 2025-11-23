@@ -26,7 +26,7 @@ app.post('/', (req: Request, res: Response) => {
 
 app.put('/', (req: Request, res: Response) => {
   res.send("PUTTING TO THE MAIN URL");
-  console.log("THAT's the number we got");
+  console.log("THAT's thre number we got");
 })
 
 app.delete('/', (req: Request, res: Response) => {
@@ -35,14 +35,25 @@ app.delete('/', (req: Request, res: Response) => {
 })
 
 
-// app.get("/:id", async (req: Request, res: Response) =>{
-//   console.log(req.params.id);
-//   console.log("THAT's the number we got")
+app.get("/:id", async (req:Request, res: Response) =>{
 
-// //   let doc: JSON = await db.user.findMany();
-// //   console.log(doc);
-// //   res.send(doc);
-// })
+
+
+
+})
+
+app.post("/:id", async (req: Request, res: Response) =>{
+  console.log(req.params.id);
+  console.log("THAT's the number we got");
+
+  console.log(req.body.data)
+
+  res.status(200).send({"msg": "WE GOOD"})
+
+//   let doc: JSON = await db.user.findMany();
+//   console.log(doc);
+//   res.send(doc);
+})
 
 
 const PORT = process.env.PORT || 5001;
