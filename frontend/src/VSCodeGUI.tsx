@@ -78,11 +78,14 @@ export default function VSCodeGUI() {
 
             <div className="main-content">
 
+                {/* This is the file directory */}
                 <div className="sidebar-panel">
                     <FileExplorer files={files} onFileSelect={handleFileSelect} selectedFile={selectedFile} />
                 </div>
 
-                <div className="editor-panel">
+                
+                {/* this part actually edits */}
+                <div className="editor-pane">
                     <div className="tabs">
                         {openTabs.map(tab => (
                             <div
