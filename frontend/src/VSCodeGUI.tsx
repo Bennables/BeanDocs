@@ -13,6 +13,10 @@ interface File {
 }
 
 export default function VSCodeGUI() {
+
+    // this one uses premade files
+    // useState is a file array
+    
     const [files, setFiles] = useState<File[]>([
         {
             id: '1',
@@ -37,6 +41,9 @@ export default function VSCodeGUI() {
         }
     ]);
 
+
+    // this documents open files
+    // gets the file too
     const [openTabs, setOpenTabs] = useState<File[]>([files[0]]);
     const [activeTab, setActiveTab] = useState<string>(files[0].id);
     const [selectedFile, setSelectedFile] = useState<File | null>(files[0]);
@@ -44,22 +51,28 @@ export default function VSCodeGUI() {
     const handleFileSelect = (file: File) => {
         setSelectedFile(file);
 
+        //find the tab that you want and set it active
         if (!openTabs.find(t => t.id === file.id)) {
             setOpenTabs([...openTabs, file]);
         }
         setActiveTab(file.id);
     };
 
+    //
     const handleCloseTab = (fileId: string) => {
+        //remove the one you wanna close
         const newTabs = openTabs.filter(t => t.id !== fileId);
+        //update openTabs
         setOpenTabs(newTabs);
 
+        //sets active tab to 0
         if (activeTab === fileId && newTabs.length > 0) {
             setActiveTab(newTabs[0].id);
             setSelectedFile(newTabs[0]);
         }
     };
 
+    // THIS IS THE UPDATE FUNCTION. WE"RE GONNA NEED TO DO SOME INTEGRATION HERE
     const handleContentChange = (content: string) => {
         if (selectedFile) {
             const updatedFiles = files.map(f =>
@@ -104,7 +117,6 @@ export default function VSCodeGUI() {
                                         handleCloseTab(tab.id);
                                     }}
                                 >
-                                    ×
                                 </button>
                             </div>
                         ))}
