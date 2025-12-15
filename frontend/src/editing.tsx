@@ -48,10 +48,30 @@ const Editor2 = ( props : any) => {
 
         const intervalId = setInterval(push, 3000);
 
-
+        // this is the cleanup. it runs immediately before useEffect is run again
+        // ends the process even if it doesn't get to execute, so you must not make changes for 3000ms before it saves
         return () => clearInterval(intervalId);
 
-    }, [editorState, 3000])
+    }, [editorState])
+
+    useEffect(() => { 
+        const pull = async() => {
+            console.log("retrieving data");
+            const updatedData = await axios.get(`${url}/${props.id}`)
+            .then(res => {
+                console.log(res);
+
+
+            })
+            .catch(err => {
+                console.log(err)
+            })
+        }
+
+        const intervalId = setInterval(pull, 3000);
+
+        return() => clearInterval(intervalId);
+    })
     
     
 
