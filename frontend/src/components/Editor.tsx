@@ -39,10 +39,6 @@ export default function Editor({ file, onChange }: EditorProps) {
                 </pre>
             </div>
 
-            <div className="editor-footer">
-                <span className="language-mode">{file.language.toUpperCase()}</span>
-                <span className="line-col">Ln 1, Col 1</span>
-            </div>
         </div>
     );
 }

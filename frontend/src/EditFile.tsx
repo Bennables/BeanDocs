@@ -58,7 +58,7 @@ const Editor = ({onChange}: any) => {
     <LexicalComposer initialConfig={initialConfig}>
       <RichTextPlugin
         contentEditable={
-          <ContentEditable
+          <ContentEditable //THIS CAN BE CHANGED TO ADD classes for styling. Default is just a small html input box
             aria-placeholder={'Enter some text...'}
             placeholder={<div>Enter some text...</div>}
           />
@@ -66,6 +66,7 @@ const Editor = ({onChange}: any) => {
         ErrorBoundary={LexicalErrorBoundary}
       />
       <HistoryPlugin />
+      {/* yeah it has history */}
       <AutoFocusPlugin />
       <MyOnChangePlugin onChange={onChange}/>
     </LexicalComposer>

@@ -5,6 +5,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Editor2 from './editing.tsx'
 // import Editor from './components/lexical.tsx'
 import VSCodeGUI from './VSCodeGUI.tsx';
+import RichText from './richText.tsx';
 
 createRoot(document.getElementById('root')!).render(
 
