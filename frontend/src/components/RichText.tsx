@@ -136,6 +136,7 @@ const editorConfig = {
   onError(error: Error) {
     throw error;
   },
+  //THIS IS THE THEME FOR THE WHOLE RICH TEXT EDITOR
   theme: ExampleTheme,
 };
 
