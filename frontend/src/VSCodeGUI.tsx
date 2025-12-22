@@ -3,6 +3,8 @@ import Sidebar from './components/Sidebar';
 import FileExplorer from './components/FileExplorer';
 import Editor from './components/Editor';
 import './VSCodeGUI.css';
+import { RichTextPlugin } from '@lexical/react/LexicalRichTextPlugin';
+import RichText from "./components/RichText"
 
 interface File {
     id: string;
@@ -123,10 +125,7 @@ export default function VSCodeGUI() {
                     </div>
 
                     {selectedFile ? (
-                        <Editor
-                            file={selectedFile}
-                            onChange={handleContentChange}
-                        />
+                        <RichText/>
                     ) : (
                         <div className="no-file-selected">
                             <p>No file selected</p>
