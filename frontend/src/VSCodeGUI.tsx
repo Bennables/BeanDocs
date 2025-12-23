@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import Sidebar from './components/Sidebar';
 import FileExplorer from './components/FileExplorer';
-import Editor from './components/Editor';
+// import Editor from './components/Editor';
 import './VSCodeGUI.css';
 import { RichTextPlugin } from '@lexical/react/LexicalRichTextPlugin';
-import RichText from "./components/RichText"
+import Editor from "./components/RichText"
 
 interface File {
     id: string;
@@ -14,7 +14,7 @@ interface File {
     language: string;
 }
 
-export default function VSCodeGUI() {
+export default function VSCodeGUI( {onChange}: any) {
 
     // this one uses premade files
     // useState is a file array
@@ -125,7 +125,7 @@ export default function VSCodeGUI() {
                     </div>
 
                     {selectedFile ? (
-                        <RichText/>
+                        <Editor onChange={onChange}/>
                     ) : (
                         <div className="no-file-selected">
                             <p>No file selected</p>

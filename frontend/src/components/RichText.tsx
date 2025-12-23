@@ -12,6 +12,8 @@ import {ContentEditable} from '@lexical/react/LexicalContentEditable';
 import {LexicalErrorBoundary} from '@lexical/react/LexicalErrorBoundary';
 import {HistoryPlugin} from '@lexical/react/LexicalHistoryPlugin';
 import {RichTextPlugin} from '@lexical/react/LexicalRichTextPlugin';
+import { useLexicalComposerContext } from '@lexical/react/LexicalComposerContext';
+import { useEffect } from 'react';
 import {
   $isTextNode,
   DOMConversionMap,
@@ -140,7 +142,42 @@ const editorConfig = {
   theme: ExampleTheme,
 };
 
-export default function App() {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+export default function Editor( {onChange} : any) {
+
+
+  // on update plugin
+  // When the editor changes, you can get notified via the
+  // OnChangePlugin!
+  function MyOnChangePlugin({ onChange }: any) {
+    // Access the editor through the LexicalComposerContext
+    const [editor] = useLexicalComposerContext();
+    // Wrap our listener in useEffect to handle the teardown and avoid stale references.
+    useEffect(() => {
+      // most listeners return a teardown function that can be called to clean them up.
+      return editor.registerUpdateListener(({editorState}) => {
+        // call onChange here to pass the latest state up to the parent.
+        onChange(editorState);
+      });
+    }, [editor, onChange]);
+    return null;
+  }
+
+
+
   return (
     <LexicalComposer initialConfig={editorConfig}>
       <div className="editor-container">
@@ -159,6 +196,7 @@ export default function App() {
             ErrorBoundary={LexicalErrorBoundary}
           />
           <HistoryPlugin />
+          <MyOnChangePlugin onChange={onChange}/>
           <AutoFocusPlugin />
           <TreeViewPlugin />
         </div>
