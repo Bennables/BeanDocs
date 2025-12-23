@@ -1,10 +1,10 @@
 import { useState } from 'react';
-import Sidebar from './components/Sidebar';
-import FileExplorer from './components/FileExplorer';
+import Sidebar from './Sidebar';
+import FileExplorer from './FileExplorer';
 // import Editor from './components/Editor';
 import './VSCodeGUI.css';
 import { RichTextPlugin } from '@lexical/react/LexicalRichTextPlugin';
-import Editor from "./components/RichText"
+import Editor from "./RichText"
 
 interface File {
     id: string;

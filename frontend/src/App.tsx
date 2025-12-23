@@ -1,4 +1,4 @@
-import VSCodeGUI from './VSCodeGUI'
+import VSCodeGUI from './components/VSCodeGUI'
 import './App.css'
 
 function App() {

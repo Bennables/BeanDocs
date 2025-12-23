@@ -1,25 +1,21 @@
 
 import { useState, useEffect } from "react";
 import axios from "axios";
-import VSCodeGUI from "../VSCodeGUI";
+import VSCodeGUI from "./components/VSCodeGUI";
 
 export const LexicalParent = () => {
 
     const [editState, setEditState] = useState("");
     const link = import.meta.env.VITE_BASE_LINK;
 
-    useEffect(()=> {
-
-        const intervalId = setInterval(() => {
-            // do stuff
-            axios.post(`${link}/`, {editor: editState});
-            console.log("HEHE")
-
+    useEffect(() => {
+        const timeout = setTimeout(() => {
+            axios.post(`${link}/`, { editor: editState });
         }, 1000);
 
-        return () => clearInterval(intervalId);
+        return () => clearTimeout(timeout);
+    }, [editState]);
 
-    }, [editState])
 
 
     const onChange = (editorState: JSON) => {

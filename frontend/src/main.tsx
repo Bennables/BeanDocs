@@ -2,9 +2,9 @@ import { createRoot } from 'react-dom/client'
 import './index.css'
 import Home from './home.tsx'
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import VSCodeGUI from './VSCodeGUI.tsx';
+import VSCodeGUI from './components/VSCodeGUI.tsx';
 import Editor from './components/RichText.tsx';
-import { LexicalParent } from './components/Updates.tsx';
+import { LexicalParent } from './Updates.tsx';
 
 createRoot(document.getElementById('root')!).render(
 
