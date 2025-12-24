@@ -1,12 +1,16 @@
 import express from "express";
-import type { Request, Response }  from 'express';
+import type { NextFunction, Request, Response }  from 'express';
 import cors from "cors";
 import * as dotenv from "dotenv";
 
 import { PrismaPg } from '@prisma/adapter-pg'
 import { PrismaClient } from '../generated/prisma/client.js'
 
+import jwt from 'jsonwebtoken';
+
+
 const connectionString = `${process.env.DATABASE_URL}`
+const jwtSecret = `${process.env.JWT_SECRET_KEY}`
 
 const adapter = new PrismaPg({ connectionString })
 const prisma = new PrismaClient({ adapter })
@@ -21,6 +25,13 @@ const app = express();
 app.use(cors());
 
 app.use(express.json());
+
+
+app.use((req, res, next) => {
+  console.log(req.method, req.originalUrl);
+  next()
+})
+
 
 
 app.get('/', (req: Request, res: Response) => {
@@ -44,7 +55,7 @@ app.delete('/', (req: Request, res: Response) => {
 })
 
 
-app.get("/:id", async (req:Request, res: Response) =>{
+app.get("/:id", (req:Request, res: Response) =>{
 
   console.log("TRYING TO GET");
   res.status(200).send({"msg": "GET IS GOOD"})
@@ -52,7 +63,19 @@ app.get("/:id", async (req:Request, res: Response) =>{
 
 })
 
-app.post("/:id", async (req: Request, res: Response) =>{
+app.post("/login", async (req: Request, res: Response) => {
+    console.log(req.body);
+    console.log("WE GOT A LOGIN REQ")
+
+}) 
+
+app.post("/create", async (req: Request, res: Response) => {
+    console.log(req.body);
+    console.log("WE GOT A SIGNUP REQ")
+
+}) 
+
+app.post("/d/:id", async (req: Request, res: Response) =>{
   console.log(req.params.id);
   console.log("THAT's the number we got");
 
@@ -65,7 +88,7 @@ app.post("/:id", async (req: Request, res: Response) =>{
 //   res.send(doc);
 })
 
-app.get("/:id", async (req: Request, res: Response) => {
+app.get("/d/:id", async (req: Request, res: Response) => {
   console.log(typeof req.params.id);
 
   const done = await prisma.user.create({
