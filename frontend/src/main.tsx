@@ -5,6 +5,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import VSCodeGUI from './components/VSCodeGUI.tsx';
 import Editor from './components/RichText.tsx';
 import { LexicalParent } from './Updates.tsx';
+import Login from './login.tsx';
+import CreateAccount from './create.tsx';
 
 createRoot(document.getElementById('root')!).render(
 
@@ -13,7 +15,8 @@ createRoot(document.getElementById('root')!).render(
       {/* <Route path="/" element={<Home/>}/> */}
       {/* <Route path="/edit" element={<Editor2 id={1}/>}/> */}
       <Route path="/gui" element={<LexicalParent/>}/>
-      <Route path="/" element={<Editor/>}/>
+      <Route path="/" element={<Login/>}/>
+      <Route path="/create" element = {<CreateAccount/>}/>
 
     </Routes>
   </BrowserRouter>
